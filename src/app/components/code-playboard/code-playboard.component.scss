@@ -1,0 +1,32 @@
+:host {
+  flex: 1;
+  height: 100%;
+}
+
+.code-playboard {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.playboard-title {
+  display: flex;
+  line-height: 36px;
+  padding: 0 12px;
+  font-weight: bold;
+  font-size: medium;
+  font-style: italic;
+  letter-spacing: 1px;
+}
+
+.code-tools {
+  line-height: 36px;
+}
+.code-tool {
+  vertical-align: -25%;
+  cursor: pointer;
+}
+
+.playboard-content {
+  flex: 1;
+}

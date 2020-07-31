@@ -1,0 +1,17 @@
+.editor-page{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    .editor-content{
+        display: flex;
+        flex: 1;
+        .meta-info{
+            width: 400px;
+            border-right: solid 1px #efefef ;
+        }
+        .code-field{
+            flex: 1;
+            padding: 10px;
+        }
+    }
+}

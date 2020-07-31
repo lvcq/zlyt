@@ -1,0 +1,21 @@
+@import "~@angular/material/theming";
+
+@mixin code-playboard-theme($theme) {
+  $color: mat-get-color-config($theme);
+  @if $color != null {
+    @include code-playboard-color($color);
+  }
+}
+
+@mixin code-playboard-color($color-theme) {
+  $config: mat-get-color-config($color-theme);
+  $primary: map-get($config, primary);
+
+  .playboard-title {
+    background: mat-color($primary);
+    color: mat-color($primary, default-contrast);
+  }
+  .playboard-content {
+    border: solid 1px mat-color($primary);
+  }
+}

@@ -9,7 +9,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "preview": "npm run build:prod && docker-compose down && docker-compose up -d"
+    "preview": "npm run build:prod && docker-compose down && docker-compose up -d",
+    "build:ace":"git submodule init && rm -fr ./src/assets/ace && cd ./sub/ace &&npm install && node ./Makefile.dryice.js -m --target ../../src/assets/ace/ && cd ../.."
   },
   "private": true,
   "dependencies": {

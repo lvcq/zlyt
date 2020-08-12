@@ -1,12 +1,14 @@
 <mat-grid-list cols="2" rowHeight="fit">
     <mat-grid-tile>
-        <app-code-playboard lang="html"></app-code-playboard>
+        <app-code-playboard lang="html" [(code)]="htmlCode"></app-code-playboard>
     </mat-grid-tile>
     <mat-grid-tile>
-        <app-code-playboard></app-code-playboard>
+        <app-code-playboard lang="javascript" [(code)]="jsCode"></app-code-playboard>
     </mat-grid-tile>
     <mat-grid-tile>
-        <app-code-playboard></app-code-playboard>
+        <app-code-playboard lang="css" [(code)]="cssCode"></app-code-playboard>
     </mat-grid-tile>
-    <mat-grid-tile>4</mat-grid-tile>
+    <mat-grid-tile>
+        <app-web-preview [html]="htmlCode" [css]="cssCode" [javascript]="jsCode"></app-web-preview>
+    </mat-grid-tile>
 </mat-grid-list>

@@ -2,8 +2,14 @@
 
 @mixin code-playboard-theme($theme) {
   $color: mat-get-color-config($theme);
+  $typography: mat-get-typography-config($theme);
+
   @if $color != null {
     @include code-playboard-color($color);
+  }
+
+  @if $typography !=null {
+    @include code-playboard-typography($typography);
   }
 }
 
@@ -17,5 +23,11 @@
   }
   .playboard-content {
     border: solid 1px mat-color($primary);
+  }
+}
+
+@mixin code-playboard-typography($config-or-theme) {
+  .playboard-content {
+    margin: 2px;
   }
 }

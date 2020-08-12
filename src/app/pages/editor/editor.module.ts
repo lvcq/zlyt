@@ -11,6 +11,7 @@ import { TextFieldModule } from '@angular/cdk/text-field';
 import { MatGridListModule } from '@angular/material/grid-list';
 
 import { CodePlayboardModule } from '@components/code-playboard/code-playboard.module';
+import { WebPreviewModule } from '@components/web-preview/web-preview.module';
 
 import { EditorRoutingModule } from './editor-routing.module';
 import { EditorComponent } from './editor.component';
@@ -38,7 +39,8 @@ import { CodeFieldComponent } from './code-field/code-field.component';
     MatInputModule,
     TextFieldModule,
     MatGridListModule,
-    CodePlayboardModule
+    CodePlayboardModule,
+    WebPreviewModule
   ]
 })
 export class EditorModule { }

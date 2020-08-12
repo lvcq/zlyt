@@ -7,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CodeFieldComponent implements OnInit {
 
+  htmlCode: string;
+  cssCode: string;
+  jsCode: string;
   constructor() { }
 
   ngOnInit(): void {

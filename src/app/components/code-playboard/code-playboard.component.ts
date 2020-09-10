@@ -25,9 +25,13 @@ export class CodePlayboardComponent implements OnInit, OnChanges {
 
   private editor: any;
   private codeChangeTimer: any;
-  constructor() { }
+  private beautify: any;
+  constructor() {
+    this.beautify = ace.require("ace/ext/beautify");
+  }
 
   ngOnInit(): void {
+
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -84,6 +88,8 @@ export class CodePlayboardComponent implements OnInit, OnChanges {
     }
   }
 
-
+  beautifyCode() {
+    this.beautify.beautify(this.editor.session);
+  }
 
 }

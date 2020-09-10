@@ -1,0 +1,29 @@
+@import "~@angular/material/theming";
+
+@mixin web-preview-theme($theme) {
+  $color: mat-get-color-config($theme);
+  $typography: mat-get-typography-config($theme);
+
+  @if $color != null {
+    @include web-preview-color($color);
+  }
+
+  @if $typography !=null {
+    @include web-preview-typography($typography);
+  }
+}
+
+@mixin web-preview-color($color-theme) {
+  $config: mat-get-color-config($color-theme);
+  $primary: map-get($config, primary);
+
+  .web-preview-result {
+    border: solid 1px mat-color($primary);
+  }
+}
+
+@mixin web-preview-typography($config-or-theme) {
+  .playboard-content {
+    margin: 2px;
+  }
+}

@@ -1,5 +1,6 @@
 @import "~@angular/material/theming";
 @import "../components/code-playboard/code-playboard.theme.scss";
+@import "../components/web-preview/web-preview.theme.scss";
 
 @include mat-core();
 
@@ -17,3 +18,4 @@ $theme: mat-light-theme(
 @include angular-material-theme($theme);
 
 @include code-playboard-theme($theme);
+@include web-preview-theme($theme);

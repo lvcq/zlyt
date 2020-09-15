@@ -1,0 +1,20 @@
+<app-login-bg>
+    <div class="login-title">
+        <span>ZLYT登录</span>
+    </div>
+    <form [formGroup]="loginForm" (submit)="loginSubmit()">
+        <mat-form-field [appearance]="'standard'" class="form-field">
+            <mat-label>用户名</mat-label>
+            <input matInput placeholder="..." [formControl]="userName" required>
+            <mat-error *ngIf="userName.invalid">{{getNameErrorMessage()}}</mat-error>
+        </mat-form-field>
+        <mat-form-field [appearance]="'standard'" class="form-field">
+            <mat-label>密码</mat-label>
+            <input matInput placeholder="..." type="password" autocomplete="current-password" [formControl]="password" required>
+            <mat-error *ngIf="password.invalid">{{getPasswordErrorMessage()}}</mat-error>
+        </mat-form-field>
+        <div class="submit">
+            <button class="submit-btn" mat-flat-button color="primary">登录</button>
+        </div>
+    </form>
+</app-login-bg>

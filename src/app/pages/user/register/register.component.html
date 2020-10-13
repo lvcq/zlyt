@@ -1,1 +1,23 @@
-<p>register works!</p>
+<app-login-bg lgTitle="用户注册">
+    <form [formGroup]="registerForm" (submit)="registerSubmit()">
+        <mat-form-field [appearance]="'standard'" class="form-field">
+            <mat-label>用户名</mat-label>
+            <input matInput placeholder="" autocomplete="off" [formControl]="username" required>
+            <mat-error *ngIf="username.invalid">{{getNameErrorMessage()}}</mat-error>
+        </mat-form-field>
+        <mat-form-field [appearance]="'standard'" class="form-field">
+            <mat-label>密码</mat-label>
+            <input matInput placeholder="" type="password" autocomplete="new-password" [formControl]="password" required>
+            <mat-error *ngIf="password.invalid">{{getPasswordErrorMessage()}}</mat-error>
+        </mat-form-field>
+        <mat-form-field [appearance]="'standard'" class="form-field">
+            <mat-label>确认密码</mat-label>
+            <input matInput placeholder="" type="password" autocomplete="new-password" [formControl]="rePassword" required>
+            <mat-error *ngIf="rePassword.invalid">{{getRepeatPasswordErrorMessage()}}</mat-error>
+        </mat-form-field>
+        <div class="submit">
+            <button class="submit-btn" mat-flat-button color="primary">注册</button>
+        </div>
+        <p class="tips">已有用户?<a routerLink="/user/login">登录</a></p>
+    </form>
+</app-login-bg>

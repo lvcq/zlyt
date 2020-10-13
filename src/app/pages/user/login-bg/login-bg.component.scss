@@ -1,13 +1,20 @@
-.login-register-bg{
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.login-register-bg {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.login-field{
-    width: 400px;
-    padding: 20px;
-    border: solid 1px #cfcfcf;
-    border-radius: 4px;
-    box-shadow: 0 0 2 2 #cfcfcf rgba(0,0,0,0);
+
+.login-field {
+  width: 400px;
+  padding: 20px;
+  border: solid 1px #cfcfcf;
+  border-radius: 4px;
+  box-shadow: 0 0 2 2 #cfcfcf rgba(0, 0, 0, 0);
+}
+
+.lg-title {
+  font-size: 24px;
+  text-align: center;
+  line-height: 2;
 }

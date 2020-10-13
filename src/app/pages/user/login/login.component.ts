@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
   }
 
   getPasswordErrorMessage() {
-    if (this.userName.hasError('required')) {
+    if (this.password.hasError('required')) {
       return '用户密码不能为空'
     }
   }

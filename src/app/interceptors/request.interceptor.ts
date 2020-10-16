@@ -14,7 +14,7 @@ export class RequestInterceptor implements HttpInterceptor {
 
   constructor() { }
 
-  intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const { url } = request;
     const req = request.clone({ url: joinUrl(environment.server, url) })
     return next.handle(req);

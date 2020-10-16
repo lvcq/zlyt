@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Login } from 'src/app/utils/login';
+import { ResponseWithCode } from 'src/app/modal/http';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,9 @@ import { Login } from 'src/app/utils/login';
 export class UserService {
 
   private readonly loginPath = "/user/login"
-  private readonly validateUsernamePath = 'user/validate-username-unique';
+  private readonly registerPath = '/user/register';
+  private readonly validateUsernamePath = '/user/username_exists';
+
 
   public loginSucess$ = new BehaviorSubject<boolean>(false);
   public logoutSucess$ = new BehaviorSubject<boolean>(false);
@@ -22,20 +25,36 @@ export class UserService {
 
   login({ userName, password }: { userName: string; password: string }) {
     const { pwd, timestamp } = Login.cryptoPassword(userName, password);
-    this.http.post(this.loginPath, {
+    this.http.post<ResponseWithCode<UserInfo>>(this.loginPath, {
       user_name: userName,
       password: pwd,
       timestamp
     }).subscribe(res => {
+      if (res && res.code === 20000) {
+        this.loginSucess$.next(true);
+        this.userinfo$.next(res.data);
+      }
+    })
+  }
+
+  register(username: string, password: string) {
+    this.http.post<ResponseWithCode<UserInfo>>(this.registerPath, {
+      username,
+      password
+    }).subscribe(res => {
+      if (res && res.code === 20000) {
+        this.loginSucess$.next(true);
+        this.userinfo$.next(res.data);
+      }
     })
   }
 
   validateUsernameUnique(username: string): Observable<boolean> {
-    return this.http.get<any>(this.validateUsernamePath, {
+    return this.http.get<ResponseWithCode<boolean>>(this.validateUsernamePath, {
       params: {
-        user_name: username
+        username
       }
-    }).pipe(map(res => res.data))
+    }).pipe(map(res => !res.data))
   }
 }
 

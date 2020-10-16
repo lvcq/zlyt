@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators, ValidationErrors } from '@angular/forms';
+import { AbstractControl, AsyncValidatorFn, FormBuilder, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { UserService } from '@services/user.service';
-import { of } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
+import { debounceTime, distinctUntilChanged, first, map, switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-register',
@@ -12,9 +12,13 @@ import { map } from 'rxjs/operators';
 export class RegisterComponent implements OnInit {
 
   public registerForm: FormGroup;
-  public username = new FormControl('', [Validators.required], [this.validateUserUnique.bind(this)]);
+  public username = new FormControl('', [Validators.required], [this.validateUserUnique()]);
   public password = new FormControl('', [Validators.required]);
-  public rePassword = new FormControl('', [Validators.required], [this.validateRepeatPassword]);
+  public rePassword = new FormControl('',
+    [Validators.required],
+    [(repwd: AbstractControl) => {
+      return this.validateRepeatPassword(repwd)
+    }]);
   constructor(
     private fb: FormBuilder,
     private userService: UserService
@@ -26,14 +30,19 @@ export class RegisterComponent implements OnInit {
       password: this.password,
       rePassword: this.rePassword
     })
+
   }
 
-  validateUserUnique(username: AbstractControl) {
-    if (username.value) {
-      return this.userService.validateUsernameUnique(username.value)
-        .pipe(map(item => item ? null : { notUnique: true }))
+  validateUserUnique(): AsyncValidatorFn {
+    return (control: FormControl): Observable<ValidationErrors | null> => {
+      return control.valueChanges.pipe(
+        distinctUntilChanged(),
+        debounceTime(400),
+        switchMap(() => this.userService.validateUsernameUnique(control.value)),
+        map(res => res ? null : { duplicate: true }),
+        first()
+      );
     }
-    return of(null)
   }
 
   validateRepeatPassword(repwd: AbstractControl) {
@@ -42,13 +51,17 @@ export class RegisterComponent implements OnInit {
   }
 
   registerSubmit() {
-
+    this.validForm().subscribe(() => {
+      if (this.registerForm.valid) {
+        this.userService.register(this.username.value, this.password.value);
+      }
+    })
   }
 
   getNameErrorMessage() {
     if (this.username.hasError('required')) {
       return '用户名不能为空'
-    } else if (this.username.hasError('notUnique')) {
+    } else if (this.username.hasError('duplicate')) {
       return '用户名已存在'
     }
   }
@@ -66,6 +79,16 @@ export class RegisterComponent implements OnInit {
     if (this.rePassword.hasError('required') || this.rePassword.hasError('repeatError')) {
       return '两次输入密码不一致';
     }
+  }
+
+  private validForm(): Observable<any> {
+    this.username.markAsDirty();
+    this.username.updateValueAndValidity();
+    this.password.markAsDirty();
+    this.password.updateValueAndValidity();
+    this.rePassword.markAsDirty();
+    this.rePassword.updateValueAndValidity();
+    return this.registerForm.statusChanges.pipe(first())
   }
 
 }

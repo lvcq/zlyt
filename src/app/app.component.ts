@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpAbnormalService } from '@services/http-abnormal.service';
-import { UserService } from '@services/user.service';
+import { UserAPI } from '@api/user.api';
 import { UrlRedirectService } from '@services/url-redirect.service';
 import { Router } from '@angular/router';
 
@@ -13,7 +13,7 @@ export class AppComponent implements OnInit {
 
   constructor(
     private httpAbnormalService: HttpAbnormalService,
-    private userService: UserService,
+    private userService: UserAPI,
     private urlRedirectService: UrlRedirectService,
     private router: Router
   ) {

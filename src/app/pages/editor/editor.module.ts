@@ -18,6 +18,7 @@ import { EditorComponent } from './editor.component';
 import { HeaderNavComponent } from './header-nav/header-nav.component';
 import { MetaInfoComponent } from './meta-info/meta-info.component';
 import { CodeFieldComponent } from './code-field/code-field.component';
+import { EditorService } from './editor.service';
 
 
 @NgModule({
@@ -41,6 +42,9 @@ import { CodeFieldComponent } from './code-field/code-field.component';
     MatGridListModule,
     CodePlayboardModule,
     WebPreviewModule
+  ],
+  providers: [
+    EditorService
   ]
 })
 export class EditorModule { }

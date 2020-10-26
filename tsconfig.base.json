@@ -17,6 +17,9 @@
       "dom"
     ],
     "paths": {
+      "@components": [
+        "src/app/components"
+      ],
       "@components/*": [
         "src/app/components/*"
       ],
@@ -26,11 +29,29 @@
       "@pages/*": [
         "src/app/pages/*"
       ],
+      "@services": [
+        "src/app/services"
+      ],
       "@services/*": [
         "src/app/services/*"
       ],
+      "@utils": [
+        "src/app/utils"
+      ],
       "@utils/*": [
         "src/app/utils/*"
+      ],
+      "@api": [
+        "src/app/api"
+      ],
+      "@api/*": [
+        "src/app/api/*"
+      ],
+      "@customTypes": [
+        "src/app/customTypes"
+      ],
+      "@customTypes/*": [
+        "src/app/customTypes/*"
       ],
     }
   }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { EditorService } from '../editor.service';
 
 @Component({
   selector: 'app-header-nav',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderNavComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private editorService: EditorService
+  ) { }
 
   ngOnInit(): void {
+  }
+
+
+  handleSave() {
+    this.editorService.saveNewDemo();
   }
 
 }

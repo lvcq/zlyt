@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, AsyncValidatorFn, FormBuilder, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
-import { UserService } from '@services/user.service';
+import { UserAPI } from '@api/user.api';
 import { Observable, of } from 'rxjs';
 import { debounceTime, distinctUntilChanged, first, map, switchMap } from 'rxjs/operators';
 
@@ -21,7 +21,7 @@ export class RegisterComponent implements OnInit {
     }]);
   constructor(
     private fb: FormBuilder,
-    private userService: UserService
+    private userService: UserAPI
   ) { }
 
   ngOnInit(): void {

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { UserService } from 'src/app/services/user.service';
+import { UserAPI } from '@api/user.api';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
   public password = new FormControl("", Validators.required);
 
   constructor(
-    private userService: UserService
+    private userService: UserAPI
   ) { }
 
   ngOnInit(): void {

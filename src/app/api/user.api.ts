@@ -10,9 +10,9 @@ import { ResponseWithCode } from '@customTypes/http';
 })
 export class UserAPI {
 
-    private readonly loginPath = "/user/login"
-    private readonly registerPath = '/user/register';
-    private readonly validateUsernamePath = '/user/username_exists';
+    private readonly loginPath = "/zlyt/user/login"
+    private readonly registerPath = '/zlyt/user/register';
+    private readonly validateUsernamePath = '/zlyt/user/username_exists';
 
 
     public loginSucess$ = new BehaviorSubject<boolean>(false);

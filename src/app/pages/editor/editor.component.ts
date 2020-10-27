@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { EditorService } from './editor.service';
 
 @Component({
   selector: 'app-editor',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditorComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private routerinfo: ActivatedRoute,
+    private editorService: EditorService
+  ) { }
 
   ngOnInit(): void {
+    this.processDemoId();
   }
 
+
+  private processDemoId() {
+    let id = this.routerinfo.snapshot.params['id'];
+    if (id) {
+      this.editorService.getDeomInfoById(id);
+    }
+  }
 }

@@ -14,6 +14,10 @@ export class MetaInfoComponent implements OnInit {
   public metaForm: FormGroup;
   public name = new FormControl('', [Validators.required]);
   public description = new FormControl('');
+  public demoId = new FormControl({
+    value: '',
+    disabled: true
+  }, []);
 
   constructor(
     private fb: FormBuilder,
@@ -22,6 +26,7 @@ export class MetaInfoComponent implements OnInit {
 
   ngOnInit(): void {
     this.metaForm = this.fb.group({
+      demoId: this.demoId,
       name: this.name,
       description: this.description
     })
@@ -31,6 +36,27 @@ export class MetaInfoComponent implements OnInit {
         name,
         desc: description
       })
+    });
+    this.demoIdMonitor();
+  }
+
+  private demoIdMonitor() {
+    this.editorService.demoMeta$.subscribe(meta => {
+      if (!meta) {
+        this.demoId.setValue('');
+        this.name.setValue('');
+        this.description.setValue('');
+        return;
+      }
+      if (Reflect.has(meta, 'id')) {
+        this.demoId.setValue(meta.id);
+      }
+      if (Reflect.has(meta, 'name')) {
+        this.name.setValue(meta.name);
+      }
+      if (Reflect.has(meta, 'desc')) {
+        this.description.setValue(meta.desc);
+      }
     })
   }
 

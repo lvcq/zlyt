@@ -24,17 +24,30 @@
             "tsConfig": "tsconfig.app.json",
             "aot": true,
             "allowedCommonJsDependencies": [
-              "js-sha3"
+              "js-sha3",
+              "@ant-design/colors"
             ],
             "assets": [
               "src/favicon.ico",
               "src/assets",
-              "src/manifest.webmanifest"
+              "src/manifest.webmanifest",
+              {
+                "glob": "**/*",
+                "input": "./node_modules/@ant-design/icons-angular/src/inline-svg/",
+                "output": "/assets/"
+              },
+              {
+                "glob": "**/*",
+                "input": "./node_modules/monaco-editor/min/vs",
+                "output": "/assets/vs/"
+              }
             ],
             "styles": [
+              "src/theme.less",
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "webWorkerTsConfig": "tsconfig.worker.json"
           },
           "configurations": {
             "production": {
@@ -112,7 +125,8 @@
               "tsconfig.app.json",
               "tsconfig.spec.json",
               "e2e/tsconfig.json",
-              "tsconfig.server.json"
+              "tsconfig.server.json",
+              "tsconfig.worker.json"
             ],
             "exclude": [
               "**/node_modules/**"

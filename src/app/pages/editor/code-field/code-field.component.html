@@ -9,6 +9,6 @@
         <app-code-playboard lang="css" [(code)]="cssCode" (codeChange)="handleCodeChange()"></app-code-playboard>
     </mat-grid-tile>
     <mat-grid-tile>
-        <app-web-preview [html]="htmlCode" [css]="cssCode" [javascript]="jsCode"></app-web-preview>
+        <app-web-preview [html]="previewCode.html" [css]="previewCode.css" [javascript]="previewCode.js"></app-web-preview>
     </mat-grid-tile>
 </mat-grid-list>

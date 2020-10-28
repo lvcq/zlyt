@@ -12,8 +12,10 @@ export class EditorService {
         js: ''
     };
     private id: string;
+    private codeObser = new BehaviorSubject<CodeInfo>(null);
 
     public demoMeta$ = this.demoMeta.asObservable();
+    public code$ = this.codeObser.asObservable();
 
     constructor(private demonstrateApi: DemonstrateAPI) {
 
@@ -34,8 +36,8 @@ export class EditorService {
                 id: this.id,
                 name: meta.name,
                 desc: meta.desc,
-                html: this.code.html && this.code.html.replace(/\n|\r|\s/g, ''),
-                css: this.code.css && this.code.css.replace(/\n|\r|\s/g, ''),
+                html: this.code.html,
+                css: this.code.css,
                 js: this.code.js
             }).subscribe(res => {
                 if (res && res.code === 20000) {
@@ -53,11 +55,22 @@ export class EditorService {
     getDeomInfoById(id: string) {
         this.demonstrateApi.fetchDemonstrateInfo(id).subscribe(res => {
             if (res && res.code === 20000) {
+                this.id = res.data.id;
                 this.demoMeta.next({
                     id: res.data.id,
                     name: res.data.name,
                     desc: res.data.desc || ''
+                });
+                this.setCode({
+                    html: res.data.html,
+                    css: res.data.css,
+                    js: res.data.js
                 })
+                this.codeObser.next({
+                    html: res.data.html,
+                    css: res.data.css,
+                    js: res.data.js
+                });
             }
         })
     }

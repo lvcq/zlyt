@@ -1,1 +1,1 @@
-declare const ace:any;
+declare const css_beautify:any;

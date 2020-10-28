@@ -7,7 +7,8 @@
                 format_align_left</mat-icon>
         </div>
     </div>
-    <div class="playboard-content" #codeEditor>
-
+    <div class="playboard-content">
+        <nz-code-editor class="editor" [ngModel]="code" [nzEditorOption]="{ language: lang }"
+            (nzEditorInitialized)="handleAfterEditorInit($event)"></nz-code-editor>
     </div>
 </div>

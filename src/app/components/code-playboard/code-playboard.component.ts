@@ -33,6 +33,9 @@ export class CodePlayboardComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
+    if (this.editorIns && changes && changes.code && this.code !== this.editorIns.getValue()) {
+      this.beautifyCode();
+    }
   }
 
 
@@ -54,6 +57,9 @@ export class CodePlayboardComponent implements OnInit, OnChanges {
     this.editorIns.onDidChangeModelContent(() => {
       this.codeChange.emit(this.editorIns.getValue())
     })
+    setTimeout(() => {
+      this.beautifyCode();
+    }, 300)
   }
 
 }

@@ -48,13 +48,13 @@ export class MetaInfoComponent implements OnInit {
         this.description.setValue('');
         return;
       }
-      if (Reflect.has(meta, 'id')) {
+      if (Reflect.has(meta, 'id') && this.demoId.value !== meta.id) {
         this.demoId.setValue(meta.id);
       }
-      if (Reflect.has(meta, 'name')) {
+      if (Reflect.has(meta, 'name') && this.name.value !== meta.name) {
         this.name.setValue(meta.name);
       }
-      if (Reflect.has(meta, 'desc')) {
+      if (Reflect.has(meta, 'desc') && this.description.value !== meta.desc) {
         this.description.setValue(meta.desc);
       }
     })

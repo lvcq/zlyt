@@ -12,6 +12,7 @@ export class EditorService {
         js: ''
     };
     private id: string;
+    private meta: DemoMeta;
     private codeObser = new BehaviorSubject<CodeInfo>(null);
 
     public demoMeta$ = this.demoMeta.asObservable();
@@ -22,7 +23,7 @@ export class EditorService {
     }
 
     setDemoMeta(meta: DemoMeta) {
-        this.demoMeta.next(meta);
+        this.meta = meta;
     }
 
     setCode(code: CodeInfo) {
@@ -30,7 +31,7 @@ export class EditorService {
     }
 
     saveNewDemo() {
-        const meta = this.demoMeta.getValue();
+        const meta = this.meta;
         if (meta && meta.name) {
             this.demonstrateApi.createDemonstrate({
                 id: this.id,
@@ -56,21 +57,20 @@ export class EditorService {
         this.demonstrateApi.fetchDemonstrateInfo(id).subscribe(res => {
             if (res && res.code === 20000) {
                 this.id = res.data.id;
-                this.demoMeta.next({
+                const meta = {
                     id: res.data.id,
                     name: res.data.name,
                     desc: res.data.desc || ''
-                });
-                this.setCode({
+                };
+                const code = {
                     html: res.data.html,
                     css: res.data.css,
                     js: res.data.js
-                })
-                this.codeObser.next({
-                    html: res.data.html,
-                    css: res.data.css,
-                    js: res.data.js
-                });
+                };
+                this.meta = meta;
+                this.demoMeta.next(meta);
+                this.setCode(code)
+                this.codeObser.next(code);
             }
         })
     }

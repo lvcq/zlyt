@@ -3,13 +3,19 @@ import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
   {
+    path:'',
+    pathMatch:'full',
+    redirectTo:'/space'
+  },
+  {
     path: 'editor',
     loadChildren: () => import('@pages/editor/editor.module').then(module => module.EditorModule)
   },
   {
     path: 'user',
     loadChildren: () => import('./pages/user/user.module').then(m => m.UserModule)
-  }
+  },
+  { path: 'space', loadChildren: () => import('./pages/space/space.module').then(m => m.SpaceModule) }
 ];
 
 @NgModule({

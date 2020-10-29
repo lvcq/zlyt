@@ -3,6 +3,7 @@ import { HttpAbnormalService } from '@services/http-abnormal.service';
 import { UserAPI } from '@api/user.api';
 import { UrlRedirectService } from '@services/url-redirect.service';
 import { Router } from '@angular/router';
+import { ThemeService } from '@services/theme.service';
 
 @Component({
   selector: 'app-root',
@@ -11,18 +12,23 @@ import { Router } from '@angular/router';
 })
 export class AppComponent implements OnInit {
 
+  private themeContainer: HTMLLinkElement;
+
   constructor(
     private httpAbnormalService: HttpAbnormalService,
     private userService: UserAPI,
     private urlRedirectService: UrlRedirectService,
-    private router: Router
+    private router: Router,
+    private themeService: ThemeService
   ) {
 
   }
 
   ngOnInit(): void {
+    this.themeContainer = document.querySelector("#themeStyle");
     this.httpAbnormalSub();
     this.userSub();
+    this.themeSub();
   }
 
   private httpAbnormalSub() {
@@ -37,6 +43,16 @@ export class AppComponent implements OnInit {
     this.userService.loginSucess$.subscribe(res => {
       if (res) {
         this.urlRedirectService.goRedirectUrl();
+      }
+    })
+  }
+
+  private themeSub() {
+    this.themeService.currentTheme$.subscribe(theme => {
+      if (theme) {
+        if (this.themeContainer) {
+          this.themeContainer.setAttribute('href', theme.path);
+        }
       }
     })
   }

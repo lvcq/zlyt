@@ -1,0 +1,28 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+
+.page-container {
+  flex: 1;
+}
+
+.space-side-nav {
+  height: 100%;
+}
+
+.space-side-nav-li {
+  outline: none;
+  cursor: pointer;
+}
+
+.space-content-card {
+  margin: 20px;
+
+  &.space-side-opend {
+
+    margin-right: 84px;
+  }
+}

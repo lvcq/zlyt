@@ -1,0 +1,24 @@
+<mat-toolbar color="primary">
+    <button mat-icon-button class="space-menu-toggle" aria-label="toggle side navigation" (click)="toggleSideNav()">
+        <mat-icon>menu</mat-icon>
+    </button>
+    <span>zlyt</span>
+</mat-toolbar>
+<mat-sidenav-container class="page-container" [hasBackdrop]="false">
+    <mat-sidenav mode="push" [(opened)]="openSideNav">
+        <div class="space-side-nav">
+            <mat-list>
+                <mat-divider></mat-divider>
+                <mat-list-item class="space-side-nav-li" [routerLink]="'/space/settings'">
+                    <mat-icon matTooltip="设置" [matTooltipPosition]="'right'" mat-list-icon>settings</mat-icon>
+                </mat-list-item>
+                <mat-divider></mat-divider>
+            </mat-list>
+        </div>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <mat-card class="space-content-card" [class.space-side-opend]="openSideNav">
+            <router-outlet></router-outlet>
+        </mat-card>
+    </mat-sidenav-content>
+</mat-sidenav-container>

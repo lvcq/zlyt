@@ -1,0 +1,5 @@
+<mat-radio-group class="theme-radio-group" [(ngModel)]="cTheme" (change)="handleSelectChange()">
+    <mat-radio-button class="theme-radio-button" *ngFor="let item of themes" [value]="item.id">
+        {{item.title}}
+    </mat-radio-button>
+</mat-radio-group>

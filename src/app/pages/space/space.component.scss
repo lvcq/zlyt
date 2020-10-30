@@ -18,6 +18,13 @@
   cursor: pointer;
 }
 
+.space-content-wrapper {
+  height: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
 .space-content-card {
-  margin: 20px;
+  min-height: 100%;
+  box-sizing: border-box;
 }

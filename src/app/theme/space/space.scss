@@ -1,5 +1,3 @@
-@import "node_modules/@angular/material/_theming.scss";
-
 @mixin space-theme($theme) {
   $color: mat-get-color-config($theme);
   $typography: mat-get-typography-config($theme);
@@ -16,6 +14,8 @@
 @mixin space-color($color-theme) {
   $config: mat-get-color-config($color-theme);
   $primary: map-get($config, primary);
+  $foreground: map-get($config, foreground);
+  $divider-color: map-get($foreground, divider);
 
   .space-menu-toggle {
     color: mat-color($primary, default-contrast);
@@ -23,6 +23,10 @@
 
   .space-side-nav {
     background-color: mat-color($primary, 900);
+  }
+
+  .settings-content {
+    border:  solid 1px $divider-color;
   }
 }
 

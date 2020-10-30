@@ -10,9 +10,13 @@ const routes: Routes = [{
     {
       path: 'settings',
       loadChildren: () => import('./settings/settings.module').then(m => m.SettingsModule)
+    },
+    {
+      path: 'instances',
+      loadChildren: () => import('./instances/instances.module').then(m => m.InstancesModule)
     }
   ]
-},];
+}];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

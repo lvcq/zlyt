@@ -3,21 +3,6 @@
 /* stylelint-disable-next-line material/theme-mixin-api */
 /* stylelint-disable material/no-prefixes */
 /* stylelint-enable */
-/* Colors for the ripple elements.*/
-/* stylelint-disable-next-line material/theme-mixin-api */
-/* stylelint-disable-next-line material/theme-mixin-api */
-/* stylelint-disable material/no-prefixes */
-/* stylelint-enable */
-/* Colors for the ripple elements.*/
-/* stylelint-disable-next-line material/theme-mixin-api */
-/* stylelint-disable-next-line material/theme-mixin-api */
-/* stylelint-disable material/no-prefixes */
-/* stylelint-enable */
-/* Colors for the ripple elements.*/
-/* stylelint-disable-next-line material/theme-mixin-api */
-/* stylelint-disable-next-line material/theme-mixin-api */
-/* stylelint-disable material/no-prefixes */
-/* stylelint-enable */
 .mat-badge-content {
   font-weight: 600;
   font-size: 12px;
@@ -2099,3 +2084,6 @@ th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
 
 .space-side-nav {
   background-color: #880e4f; }
+
+.settings-content {
+  border: solid 1px rgba(255, 255, 255, 0.12); }

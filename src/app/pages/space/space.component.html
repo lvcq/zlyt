@@ -5,19 +5,21 @@
     <span>zlyt</span>
 </mat-toolbar>
 <mat-sidenav-container class="page-container" [hasBackdrop]="false">
-    <mat-sidenav mode="push" [(opened)]="openSideNav">
+    <mat-sidenav mode="side" [(opened)]="openSideNav">
         <div class="space-side-nav">
             <mat-list>
-                <mat-divider></mat-divider>
                 <mat-list-item class="space-side-nav-li" [routerLink]="'/space/settings'">
                     <mat-icon matTooltip="设置" [matTooltipPosition]="'right'" mat-list-icon>settings</mat-icon>
                 </mat-list-item>
-                <mat-divider></mat-divider>
+                <mat-list-item class="space-side-nav-li" [routerLink]="'/space/instances'">
+                    <mat-icon matTooltip="示例清单" [matTooltipPosition]="'right'" mat-list-icon>insert_drive_file
+                    </mat-icon>
+                </mat-list-item>
             </mat-list>
         </div>
     </mat-sidenav>
     <mat-sidenav-content>
-        <mat-card class="space-content-card" [class.space-side-opend]="openSideNav">
+        <mat-card class="space-content-card">
             <router-outlet></router-outlet>
         </mat-card>
     </mat-sidenav-content>

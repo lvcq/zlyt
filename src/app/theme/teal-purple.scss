@@ -1,0 +1,23 @@
+@import "node_modules/@angular/material/_theming.scss";
+@import "../components/code-playboard/code-playboard.theme.scss";
+@import "../components/web-preview/web-preview.theme.scss";
+@import "./space/space.scss";
+
+$divider-color:#BDBDBD;
+$custom-foreground:(divider: $divider-color,
+  dividers: $divider-color, );
+$mat-dark-theme-foreground: map-merge($mat-dark-theme-foreground, $custom-foreground);
+
+@include mat-core();
+
+$primary: mat-palette($mat-teal, 500, 700, 100);
+$accent: mat-palette($mat-deep-purple, A200, A100, A400);
+$theme: mat-dark-theme((color: (primary: $primary,
+      accent: $accent,
+    )));
+
+@include angular-material-theme($theme);
+
+@include code-playboard-theme($theme);
+@include web-preview-theme($theme);
+@include space-theme($theme)

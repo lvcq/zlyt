@@ -12,7 +12,6 @@ import { ThemeService } from '@services/theme.service';
 })
 export class AppComponent implements OnInit {
 
-  private themeContainer: HTMLLinkElement;
 
   constructor(
     private httpAbnormalService: HttpAbnormalService,
@@ -25,10 +24,9 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.themeContainer = document.querySelector("#themeStyle");
+    
     this.httpAbnormalSub();
     this.userSub();
-    this.themeSub();
   }
 
   private httpAbnormalSub() {
@@ -43,16 +41,6 @@ export class AppComponent implements OnInit {
     this.userService.loginSucess$.subscribe(res => {
       if (res) {
         this.urlRedirectService.goRedirectUrl();
-      }
-    })
-  }
-
-  private themeSub() {
-    this.themeService.currentTheme$.subscribe(theme => {
-      if (theme) {
-        if (this.themeContainer) {
-          this.themeContainer.setAttribute('href', theme.path);
-        }
       }
     })
   }

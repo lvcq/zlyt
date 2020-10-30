@@ -1,11 +1,15 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { InitResolver } from '@services/init.resolver';
 
 const routes: Routes = [
   {
-    path:'',
-    pathMatch:'full',
-    redirectTo:'/space'
+    path: '',
+    pathMatch: 'full',
+    resolve: {
+      init: InitResolver
+    },
+    redirectTo: '/space'
   },
   {
     path: 'editor',

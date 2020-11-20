@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { WebPreviewComponent } from './web-preview.component';
 
@@ -6,7 +6,7 @@ describe('WebPreviewComponent', () => {
   let component: WebPreviewComponent;
   let fixture: ComponentFixture<WebPreviewComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ WebPreviewComponent ]
     })

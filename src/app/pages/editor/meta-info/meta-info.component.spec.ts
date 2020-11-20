@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { MetaInfoComponent } from './meta-info.component';
 
@@ -6,7 +6,7 @@ describe('MetaInfoComponent', () => {
   let component: MetaInfoComponent;
   let fixture: ComponentFixture<MetaInfoComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ MetaInfoComponent ]
     })

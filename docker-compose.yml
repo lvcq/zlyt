@@ -1,11 +1,9 @@
 version: "3"
 services:
     web:
-        image: nginx
-        container_name: "zlyt"
+        build: ./
+        container_name: "zlyt-web"
         ports: 
-            - "8099:80"
-        volumes:
-            - /home/hk/workspace/zlyt-web/dist/zlyt-web:/usr/share/nginx/html
+            - "8099:4000"
         environment:
-            - NGINX_PORT=80
+            - PORT=4000

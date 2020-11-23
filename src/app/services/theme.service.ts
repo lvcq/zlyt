@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ThemeItem } from '@customTypes/theme';
-import { BehaviorSubject, fromEvent, Observable, Subject } from 'rxjs';
-import { debounce, debounceTime, map } from 'rxjs/operators';
+import { BehaviorSubject } from 'rxjs';
+
 
 @Injectable({
     providedIn: 'root'
@@ -18,22 +18,25 @@ export class ThemeService {
             id: 'dark-pink',
             title: '暗黑-粉',
             path: './assets/themes/dark-pink.css'
-        },{
-            id:'teal-purple',
+        }, {
+            id: 'teal-purple',
             title: '茶绿-深紫',
             path: './assets/themes/teal-purple.css'
         }
     ];
     private currentTheme = new BehaviorSubject<ThemeItem>(null);
-    public currentTheme$= this.currentTheme.asObservable();
+    public currentTheme$ = this.currentTheme.asObservable();
 
     constructor() {
-        this.themeContainer = document.querySelector("#themeStyle");
-        this.getUserTheme();
     }
 
     public getThemes() {
         return this.themes;
+    }
+
+    public setThemeContainer(themeLink: HTMLLinkElement) {
+        this.themeContainer = themeLink;
+        this.getUserTheme();
     }
 
     public setCurrentTheme(id: string) {

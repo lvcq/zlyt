@@ -24,8 +24,8 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
     this.httpAbnormalSub();
+    this.themeService.setThemeContainer(document.querySelector("#themeStyle"));
     this.userSub();
   }
 

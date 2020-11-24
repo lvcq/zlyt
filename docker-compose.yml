@@ -1,9 +1,0 @@
-version: "3"
-services:
-    zlyt-web:
-        build: ./
-        container_name: "zlyt-web"
-        ports: 
-            - "8099:4000"
-        environment:
-            - PORT=4000

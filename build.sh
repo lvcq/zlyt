@@ -1,11 +1,11 @@
 #! /bin/bash
-export PATH=/home/buildagent/node/bin:\$PATH
+export PATH=/home/buildagent/node/bin:$PATH
 if ! command -v node-sass >/dev/null 2>&1; then
     npm install node-sass -g
 fi
 
 #build
-npm install
+echo $(npm install)
 
-npm run build:theme
-npm run build:ssr
+echo $(npm run build:theme)
+echo $(npm run build:ssr)

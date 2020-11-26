@@ -15,5 +15,6 @@ echo $(npm install)
 
 echo $(npm run build:theme)
 echo $(npm run build:ssr)
+echo $(pm2 link i0uhsccaeccgzfd abvdhu82390b09k)
 echo $(pm2 start ecosystem.config.js)
-echo $(pm2 plus)
+

@@ -9,3 +9,4 @@ echo $(npm install)
 
 echo $(npm run build:theme)
 echo $(npm run build:ssr)
+node dist/zlyt-web/server/main.js

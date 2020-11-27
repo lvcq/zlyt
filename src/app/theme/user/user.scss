@@ -1,0 +1,28 @@
+@import '~@angular/material/_theming';
+@mixin user-page-theme($theme) {
+    $color: mat-get-color-config($theme);
+    $typography: mat-get-typography-config($theme);
+  
+    @if $color !=null {
+      @include user-color($color);
+    }
+  
+    @if $typography !=null {
+      @include user-typography($typography);
+    }
+  }
+  
+  @mixin user-color($color-theme) {
+    $config: mat-get-color-config($color-theme);
+    $primary: map-get($config, primary);
+    $background: map-get($config, background);
+    $card-bg: map-get($foreground, card);
+    .login-field{
+      background: $card-bg;
+    }
+  }
+  
+  @mixin user-typography($config-or-theme) {
+
+  }
+  

@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "theme:custom-dark": "node-sass src/app/theme/custom.scss src/assets/themes/custom-dark.css",
+    "theme:custom-dark": "node-sass src/app/theme/custom-dark.scss src/assets/themes/custom-dark.css",
     "theme:dark-pink": "node-sass src/app/theme/dark-pink.scss src/assets/themes/dark-pink.css",
     "theme:teal-purple": "node-sass src/app/theme/teal-purple.scss src/assets/themes/teal-purple.css",
     "build:theme": "npm run theme:custom-dark && npm run theme:dark-pink && npm run theme:teal-purple",

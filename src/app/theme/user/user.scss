@@ -1,4 +1,3 @@
-@import '~@angular/material/_theming';
 @mixin user-page-theme($theme) {
     $color: mat-get-color-config($theme);
     $typography: mat-get-typography-config($theme);

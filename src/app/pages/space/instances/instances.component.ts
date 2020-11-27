@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DemonstrateAPI } from '@api/demonstrate.api';
+import { DemonstrateItem } from '@customTypes/demonstrate';
 
 @Component({
   selector: 'app-instances',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InstancesComponent implements OnInit {
 
-  constructor() { }
+  selfDemos:DemonstrateItem[]=[];
+
+  constructor(
+    private demoApi:DemonstrateAPI
+  ) { }
 
   ngOnInit(): void {
+    this.demoApi.fetchSelfDemonstrates().subscribe(res=>{
+      if (res.code===20000){
+        this.selfDemos = res.data;
+      }
+    })
   }
 
 }

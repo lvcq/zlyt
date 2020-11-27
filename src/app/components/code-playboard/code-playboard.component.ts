@@ -9,7 +9,6 @@ import {
   Output,
   EventEmitter
 } from '@angular/core';
-import { Subject } from 'rxjs';
 import { editor } from 'monaco-editor';
 
 @Component({
@@ -21,6 +20,7 @@ export class CodePlayboardComponent implements OnInit, OnChanges {
 
   @Input() lang: string;
   @Input() code: string;
+  @Input() showhead = true;
   @Output() codeChange = new EventEmitter();
 
   @ViewChild("codeEditor", { static: true, read: ElementRef }) codeEditor: ElementRef<HTMLDivElement>;

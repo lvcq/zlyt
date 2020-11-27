@@ -15,7 +15,7 @@
     $config: mat-get-color-config($color-theme);
     $primary: map-get($config, primary);
     $background: map-get($config, background);
-    $card-bg: map-get($foreground, card);
+    $card-bg: map-get($background, card);
     .login-field{
       background: $card-bg;
     }

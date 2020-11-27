@@ -11,10 +11,14 @@ fi
 
 echo $(pm2 stop ecosystem.config.js)
 #build
+echo "安装依赖"
 echo $(npm install)
 
+echo "打包应用"
 echo $(npm run build:theme)
 echo $(npm run build:ssr)
+
+echo "运行"
 echo $(pm2 link i0uhsccaeccgzfd abvdhu82390b09k)
 echo $(pm2 start ecosystem.config.js)
 

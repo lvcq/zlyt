@@ -8,5 +8,5 @@
   @include code-playboard-theme($theme);
   @include web-preview-theme($theme);
   @include space-theme($theme);
-  @include user-theme($theme);
+  @include user-page-theme($theme);
 }

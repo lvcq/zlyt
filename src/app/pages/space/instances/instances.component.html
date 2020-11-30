@@ -1,24 +1,40 @@
-<mat-grid-list cols="2" rowHeight="2:1">
+<div class="instances-list">
     <ng-container *ngFor="let item of selfDemos">
-        <mat-grid-tile [colspan]='1' >
-            <mat-card>
-                <mat-card-header>
-                    <mat-card-title>{{item.name}}</mat-card-title>
-                </mat-card-header>
-                <div class="result-preview">
-                    <app-web-preview-tabs [html]="item.html" [css]="item.css" [js]="item.js"></app-web-preview-tabs>
-                    <!-- <app-web-preview [html]="item?.html" [css]="item.css" [javascript]="item.js"></app-web-preview> -->
-                </div>
-                <mat-card-content>
-                    <p>
-                        {{item.desc}}
-                    </p>
-                </mat-card-content>
-                <mat-card-actions>
-                    <button mat-button>LIKE</button>
-                    <button mat-button>SHARE</button>
-                </mat-card-actions>
-            </mat-card>
-        </mat-grid-tile>
+        <div class="demo-row">
+            <div class="left-col">
+                <ng-container [ngTemplateOutlet]="demoCardTemp" [ngTemplateOutletContext]="{$implicit:item[0]}">
+                </ng-container>
+            </div>
+            <div class="right-col" *ngIf="item[1]">
+                <ng-container [ngTemplateOutlet]="demoCardTemp" [ngTemplateOutletContext]="{$implicit:item[1]}">
+                </ng-container>
+            </div>
+        </div>
     </ng-container>
-</mat-grid-list>
+</div>
+<div class="ins-fab">
+    <button mat-fab color="primary" aria-label="add new instance" [routerLink]="'/editor'">
+        <mat-icon>add</mat-icon>
+    </button>
+</div>
+
+<ng-template #demoCardTemp let-demo>
+    <mat-card class="ins-li">
+        <mat-card-header>
+            <mat-card-title>{{demo.name}}</mat-card-title>
+            <mat-card-subtitle>更新时间: {{demo.update_time|date:"yyyy-MM-dd HH:mm:ss"}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <div class="result-preview">
+                <app-web-preview-tabs [html]="demo.html" [css]="demo.css" [js]="demo.js"></app-web-preview-tabs>
+            </div>
+            <p>
+                {{demo.desc}}
+            </p>
+        </mat-card-content>
+        <mat-card-actions class="action-bar">
+            <button mat-button [routerLink]="'/editor/'+demo.id">编辑</button>
+            <button mat-button>SHARE</button>
+        </mat-card-actions>
+    </mat-card>
+</ng-template>

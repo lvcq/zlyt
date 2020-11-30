@@ -15,9 +15,6 @@
   $config: mat-get-color-config($color-theme);
   $primary: map-get($config, primary);
 
-  .web-preview-result {
-    border: solid 1px mat-color($primary);
-  }
 }
 
 @mixin web-preview-typography($config-or-theme) {

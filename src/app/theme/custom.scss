@@ -2,11 +2,30 @@
 @import "../components/web-preview/web-preview.theme.scss";
 @import "./space/space.scss";
 @import "./user/user.scss";
+@import "./editor/editor-page.scss";
+// @import '~@angular/material/theming';
 
 @mixin custom-theme($theme) {
+  @include text-base-color($theme);
   @include angular-material-theme($theme);
   @include code-playboard-theme($theme);
   @include web-preview-theme($theme);
   @include space-theme($theme);
   @include user-page-theme($theme);
+  @include editor-page-theme($theme);
+}
+
+
+@mixin text-base-color($theme) {
+  $color: mat-get-color-config($theme);
+
+  @if $color !=null {
+    $config: mat-get-color-config($color);
+    $foreground: map-get($config, foreground);
+    $textColor: map-get($foreground, text);
+
+    app-root {
+      color: $textColor;
+    }
+  }
 }

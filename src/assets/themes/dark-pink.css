@@ -589,6 +589,9 @@ textarea.cdk-textarea-autosize-measuring-firefox {
 .mat-mdc-focus-indicator {
   position: relative; }
 
+app-root {
+  color: white; }
+
 .mat-ripple-element {
   background-color: rgba(255, 255, 255, 0.1); }
 
@@ -2095,9 +2098,6 @@ th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
 .playboard-content {
   border: solid 1px #e91e63; }
 
-.web-preview-result {
-  border: solid 1px #e91e63; }
-
 .space-menu-toggle {
   color: white; }
 
@@ -2108,4 +2108,7 @@ th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
   border: solid 1px rgba(255, 255, 255, 0.12); }
 
 .login-field {
+  background: #424242; }
+
+.meta-info {
   background: #424242; }

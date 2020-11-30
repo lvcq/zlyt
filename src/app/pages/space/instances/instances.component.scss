@@ -1,3 +1,25 @@
-.result-preview{
-    height: 30vh;
+
+.ins-li{
+    margin:10px;
+}
+
+.demo-row{
+    display: flex;
+}
+.left-col{
+    width: 50%;
+}
+.right-col{
+    width: 50%;
+}
+
+.action-bar{
+    text-align: right;
+}
+
+.ins-fab{
+    position: fixed;
+    bottom: 40px;
+    right: 60px;
+    z-index: 2;
 }

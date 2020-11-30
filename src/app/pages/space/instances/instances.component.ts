@@ -18,7 +18,16 @@ export class InstancesComponent implements OnInit {
   ngOnInit(): void {
     this.demoApi.fetchSelfDemonstrates().subscribe(res=>{
       if (res.code===20000){
-        this.selfDemos = res.data;
+        let len = res.data.length;
+        let half =Math.floor(len/2);
+        let demos =[];
+        for(let i=0;i<half;i=i+1){
+          demos.push([res.data[2*i],res.data[2*i+1]]);
+        }
+        if(len%2===1){
+          demos.push([res.data[len-1]])
+        }
+        this.selfDemos = demos;
       }
     })
   }

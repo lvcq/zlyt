@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatGridListModule } from '@angular/material/grid-list';
+import {MatIconModule} from '@angular/material/icon';
 
 import { WebPreviewTabsModule } from '@components/web-preview-tabs/web-preview-tabs.module';
 
@@ -19,6 +20,7 @@ import { InstancesComponent } from './instances.component';
     MatCardModule,
     MatButtonModule,
     MatGridListModule,
+    MatIconModule,
     WebPreviewTabsModule
   ]
 })

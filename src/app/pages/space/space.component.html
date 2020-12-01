@@ -1,8 +1,14 @@
 <mat-toolbar color="primary">
-    <button mat-icon-button class="space-menu-toggle" aria-label="toggle side navigation" (click)="toggleSideNav()">
-        <mat-icon>menu</mat-icon>
-    </button>
-    <span>zlyt</span>
+    <div class="menu-logo">
+        <button mat-icon-button class="space-menu-toggle" aria-label="toggle side navigation" (click)="toggleSideNav()">
+            <mat-icon>menu</mat-icon>
+        </button>
+        <span>zlyt</span>
+    </div>
+    <div class="blank-space"></div>
+    <div class="user-status">
+        <app-user-status></app-user-status>
+    </div>
 </mat-toolbar>
 <mat-sidenav-container class="page-container" [hasBackdrop]="false">
     <mat-sidenav mode="side" [(opened)]="openSideNav">

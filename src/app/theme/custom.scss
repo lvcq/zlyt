@@ -3,10 +3,10 @@
 @import "./space/space.scss";
 @import "./user/user.scss";
 @import "./editor/editor-page.scss";
-// @import '~@angular/material/theming';
+//@import '~@angular/material/theming';
 
 @mixin custom-theme($theme) {
-  @include text-base-color($theme);
+  @include base-color($theme);
   @include angular-material-theme($theme);
   @include code-playboard-theme($theme);
   @include web-preview-theme($theme);
@@ -16,16 +16,30 @@
 }
 
 
-@mixin text-base-color($theme) {
+@mixin base-color($theme) {
   $color: mat-get-color-config($theme);
 
   @if $color !=null {
-    $config: mat-get-color-config($color);
-    $foreground: map-get($config, foreground);
-    $textColor: map-get($foreground, text);
+    @include text-base-color($color);
+    @include a-link-color($color)
+  }
+}
 
-    app-root {
-      color: $textColor;
-    }
+@mixin text-base-color($color-theme) {
+  $config: mat-get-color-config($color-theme);
+  $foreground: map-get($config, foreground);
+  $textColor: map-get($foreground, text);
+
+  app-root {
+    color: $textColor;
+  }
+}
+
+@mixin a-link-color($color-theme) {
+  $config: mat-get-color-config($color-theme);
+  $accent: map-get($config, accent);
+
+  .a-link {
+    color: mat-color($accent, A400);
   }
 }

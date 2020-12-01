@@ -592,6 +592,9 @@ textarea.cdk-textarea-autosize-measuring-firefox {
 app-root {
   color: white; }
 
+.a-link {
+  color: #651fff; }
+
 .mat-ripple-element {
   background-color: rgba(255, 255, 255, 0.1); }
 
@@ -2110,5 +2113,8 @@ th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
 .login-field {
   background: #424242; }
 
+.login-register-bg {
+  background-color: #303030; }
+
 .meta-info {
-  background: #424242; }
+  background: #303030; }

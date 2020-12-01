@@ -9,6 +9,8 @@ import { MatListModule } from '@angular/material/list';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatCardModule } from '@angular/material/card';
 
+import { UserStatusModule } from '@components/user-status/user-status.module';
+
 import { SpaceRoutingModule } from './space-routing.module';
 import { SpaceComponent } from './space.component';
 
@@ -23,7 +25,8 @@ import { SpaceComponent } from './space.component';
     MatIconModule,
     MatListModule,
     MatTooltipModule,
-    MatCardModule
+    MatCardModule,
+    UserStatusModule
   ]
 })
 export class SpaceModule { }

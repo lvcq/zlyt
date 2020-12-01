@@ -16,8 +16,12 @@
     $primary: map-get($config, primary);
     $background: map-get($config, background);
     $card-bg: map-get($background, card);
+    $pg-bg: map-get($background, background);
     .login-field{
       background: $card-bg;
+    }
+    .login-register-bg{
+      background-color: $pg-bg;
     }
   }
   

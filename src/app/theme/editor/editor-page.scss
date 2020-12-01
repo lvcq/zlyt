@@ -16,7 +16,7 @@
     $config: mat-get-color-config($color-theme);
     $primary: map-get($config, primary);
     $background: map-get($config, background);
-    $bg: map-get($background, card);
+    $bg: map-get($background, background);
     .meta-info{
       background: $bg;
     }

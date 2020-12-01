@@ -4,6 +4,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Login } from 'src/app/utils/login';
 import { ResponseWithCode } from '@customTypes/http';
+import { UserInfo } from '@customTypes/user';
 
 @Injectable({
     providedIn: 'root'
@@ -58,6 +59,4 @@ export class UserAPI {
     }
 }
 
-export interface UserInfo {
-    username: string;
-}
+

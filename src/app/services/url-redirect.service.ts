@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 })
 export class UrlRedirectService {
   private redirectUrl = '';
-  private readonly indexUrl = '/editor';
+  private readonly indexUrl = '/space';
   private readonly loginPath = '/usr/login';
   constructor(
     private router: Router

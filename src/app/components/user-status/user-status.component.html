@@ -1,7 +1,19 @@
 <ng-container *ngIf="isLogined;else goLoginTemp">
-    <mat-icon aria-hidden="false" aria-label="user avatar">account_box</mat-icon>
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon aria-hidden="false" aria-label="user avatar">account_box</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+        <mat-list>
+            <mat-list-item>
+                <button mat-menu-item (click)="logout()">
+                    <mat-icon aria-hidden="false" aria-label="logout">exit_to_app</mat-icon>
+                    <span>退出登录</span>
+                </button>
+            </mat-list-item>
+        </mat-list>
+    </mat-menu>
 </ng-container>
 
 <ng-template #goLoginTemp>
-    <span class="login-ref" [routerLink]="['/user/login']">登录</span>
+    <span class="login-ref" (click)="redirectToLogin()">登录</span>
 </ng-template>

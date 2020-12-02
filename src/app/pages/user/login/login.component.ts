@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { UserAPI } from '@api/user.api';
+import { UserService } from '@services/user.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-login',
@@ -10,22 +11,23 @@ import { UserAPI } from '@api/user.api';
 export class LoginComponent implements OnInit {
 
   public loginForm: FormGroup;
-  public userName = new FormControl("", Validators.required);
+  public username = new FormControl("", Validators.required);
   public password = new FormControl("", Validators.required);
 
   constructor(
-    private userService: UserAPI
+    private userService: UserService,
+    private snackBar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
     this.loginForm = new FormGroup({
-      userName: this.userName,
+      username: this.username,
       password: this.password
     });
   }
 
   getNameErrorMessage() {
-    if (this.userName.hasError('required')) {
+    if (this.username.hasError('required')) {
       return '用户名不能为空'
     }
   }
@@ -39,13 +41,21 @@ export class LoginComponent implements OnInit {
   loginSubmit() {
     this.validForm();
     if (this.loginForm.valid) {
-      this.userService.login(this.loginForm.value)
+      this.userService.login(this.loginForm.value).subscribe(res => {
+        if (!res.status) {
+          this.snackBar.open(res.msg, null, {
+            horizontalPosition: 'center',
+            verticalPosition: 'top',
+            duration:3000
+          })
+        }
+      })
     }
   }
 
   private validForm() {
-    this.userName.markAsDirty();
-    this.userName.updateValueAndValidity();
+    this.username.markAsDirty();
+    this.username.updateValueAndValidity();
     this.password.markAsDirty();
     this.password.updateValueAndValidity();
   }

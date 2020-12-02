@@ -2,8 +2,8 @@
     <form [formGroup]="loginForm" (submit)="loginSubmit()">
         <mat-form-field [appearance]="'standard'" class="form-field">
             <mat-label>用户名</mat-label>
-            <input matInput placeholder="" autocomplete="username" [formControl]="userName" required>
-            <mat-error *ngIf="userName.invalid">{{getNameErrorMessage()}}</mat-error>
+            <input matInput placeholder="" autocomplete="username" [formControl]="username" required>
+            <mat-error *ngIf="username.invalid">{{getNameErrorMessage()}}</mat-error>
         </mat-form-field>
         <mat-form-field [appearance]="'standard'" class="form-field">
             <mat-label>密码</mat-label>

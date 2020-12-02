@@ -8,12 +8,12 @@ import { Component, Input, OnInit } from '@angular/core';
 export class WebPreviewTabsComponent implements OnInit {
 
   @Input() html: string;
-  @Input() css:string;
-  @Input() js:string;
+  @Input() css: string;
+  @Input() js: string;
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.css)
+
   }
 
 }

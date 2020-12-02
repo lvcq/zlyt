@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, AsyncValidatorFn, FormBuilder, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { UserAPI } from '@api/user.api';
+import { UserService } from '@services/user.service';
 import { Observable, of } from 'rxjs';
 import { debounceTime, distinctUntilChanged, first, map, switchMap } from 'rxjs/operators';
 
@@ -21,7 +22,8 @@ export class RegisterComponent implements OnInit {
     }]);
   constructor(
     private fb: FormBuilder,
-    private userService: UserAPI
+    private userApi: UserAPI,
+    private userService: UserService
   ) { }
 
   ngOnInit(): void {
@@ -38,7 +40,7 @@ export class RegisterComponent implements OnInit {
       return control.valueChanges.pipe(
         distinctUntilChanged(),
         debounceTime(400),
-        switchMap(() => this.userService.validateUsernameUnique(control.value)),
+        switchMap(() => this.userApi.validateUsernameUnique(control.value)),
         map(res => res ? null : { duplicate: true }),
         first()
       );
@@ -53,7 +55,7 @@ export class RegisterComponent implements OnInit {
   registerSubmit() {
     this.validForm().subscribe(() => {
       if (this.registerForm.valid) {
-        this.userService.register(this.username.value, this.password.value);
+        this.userService.register({ username: this.username.value, password: this.password.value });
       }
     })
   }

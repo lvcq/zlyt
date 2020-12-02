@@ -14,40 +14,26 @@ export class UserAPI {
     private readonly loginPath = "/zlyt/user/login"
     private readonly registerPath = '/zlyt/user/register';
     private readonly validateUsernamePath = '/zlyt/user/username_exists';
-
-
-    public loginSucess$ = new BehaviorSubject<boolean>(false);
-    public logoutSucess$ = new BehaviorSubject<boolean>(false);
-    public userinfo$ = new BehaviorSubject<UserInfo>(null);
+    private readonly userinfoPath= "/zlyt/user/userinfo";
+    private readonly logoutPath = "/zlyt/user/logout";
 
     constructor(
         private http: HttpClient
     ) { }
 
-    login({ userName, password }: { userName: string; password: string }) {
-        const { pwd, timestamp } = Login.cryptoPassword(userName, password);
-        this.http.post<ResponseWithCode<UserInfo>>(this.loginPath, {
-            user_name: userName,
-            password: pwd,
+    login({ username, password, timestamp }: { username: string; password: string, timestamp: number }) {
+        return this.http.post<ResponseWithCode<UserInfo>>(this.loginPath, {
+            user_name: username,
+            password,
             timestamp
-        }).subscribe(res => {
-            if (res && res.code === 20000) {
-                this.loginSucess$.next(true);
-                this.userinfo$.next(res.data);
-            }
         })
     }
 
     register(username: string, password: string) {
-        this.http.post<ResponseWithCode<UserInfo>>(this.registerPath, {
+        return this.http.post<ResponseWithCode<UserInfo>>(this.registerPath, {
             username,
             password
-        }).subscribe(res => {
-            if (res && res.code === 20000) {
-                this.loginSucess$.next(true);
-                this.userinfo$.next(res.data);
-            }
-        })
+        });
     }
 
     validateUsernameUnique(username: string): Observable<boolean> {
@@ -55,7 +41,15 @@ export class UserAPI {
             params: {
                 username
             }
-        }).pipe(map(res => !res.data))
+        }).pipe(map(res => !res.data));
+    }
+
+    userinfo(){
+        return this.http.get<ResponseWithCode<UserInfo>>(this.userinfoPath);
+    }
+
+    logout(){
+        return this.http.get<ResponseWithCode<boolean>>(this.logoutPath);
     }
 }
 

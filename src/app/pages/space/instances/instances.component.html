@@ -22,19 +22,19 @@
     <mat-card class="ins-li">
         <mat-card-header>
             <mat-card-title>{{demo.name}}</mat-card-title>
-            <mat-card-subtitle>更新时间: {{demo.update_time|date:"yyyy-MM-dd HH:mm:ss"}}</mat-card-subtitle>
+            <mat-card-subtitle class="desc" [matTooltip]="demo.desc">描述: {{demo.desc||'无'}}</mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
             <div class="result-preview">
                 <app-web-preview-tabs [html]="demo.html" [css]="demo.css" [js]="demo.js"></app-web-preview-tabs>
             </div>
-            <p>
-                {{demo.desc}}
+            <p class="update-time">
+                更新时间: {{demo.update_time|date:"yyyy-MM-dd HH:mm:ss"}}
             </p>
         </mat-card-content>
         <mat-card-actions class="action-bar">
             <button mat-button [routerLink]="'/editor/'+demo.id">编辑</button>
-            <button mat-button (click)="copyShareUrl(demo.id)" >分享</button>
+            <button mat-button (click)="copyShareUrl(demo.id)">分享</button>
         </mat-card-actions>
     </mat-card>
 </ng-template>

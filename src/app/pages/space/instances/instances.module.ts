@@ -6,6 +6,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 import { ClipboardModule } from '@angular/cdk/clipboard';
 
@@ -26,7 +27,8 @@ import { InstancesComponent } from './instances.component';
     MatIconModule,
     WebPreviewTabsModule,
     ClipboardModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatTooltipModule
   ]
 })
 export class InstancesModule { }

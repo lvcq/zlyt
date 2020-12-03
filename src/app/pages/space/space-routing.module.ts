@@ -8,6 +8,11 @@ const routes: Routes = [{
   component: SpaceComponent,
   children: [
     {
+      path: '',
+      pathMatch: 'full',
+      redirectTo: 'instances'
+    },
+    {
       path: 'settings',
       loadChildren: () => import('./settings/settings.module').then(m => m.SettingsModule)
     },

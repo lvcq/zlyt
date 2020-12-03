@@ -13,13 +13,26 @@
     width: 50%;
 }
 
-.action-bar{
-    text-align: right;
-}
-
 .ins-fab{
     position: fixed;
     bottom: 40px;
     right: 60px;
     z-index: 2;
+}
+
+.desc{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    cursor: default;
+}
+
+.update-time{
+    margin-top: 6px;
+    padding-right: 2em;
+    text-align: right;
+}
+
+.action-bar{
+    text-align: right;
 }

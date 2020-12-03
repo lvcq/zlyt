@@ -7,3 +7,9 @@
 .logo {
   cursor: pointer;
 }
+
+.h-btn{
+  &:not(:nth-last-of-type(1)){
+    margin-right: 12px;
+  }
+}

@@ -18,7 +18,7 @@ export class AppComponent implements OnInit, AfterContentInit {
     private userService: UserService,
     private urlRedirectService: UrlRedirectService,
     private router: Router,
-    private themeService: ThemeService
+    private themeService: ThemeService,
   ) {
 
   }

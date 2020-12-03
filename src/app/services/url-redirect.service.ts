@@ -8,17 +8,22 @@ export class UrlRedirectService {
   private redirectUrl = '';
   private readonly indexUrl = '/space';
   private readonly loginPath = '/usr/login';
+  private loginFlag = false;
   constructor(
     private router: Router
   ) { }
 
 
   setRedirectUrl(url: string) {
+    this.loginFlag = true;
     this.redirectUrl = url;
   }
 
   goRedirectUrl() {
-    this.router.navigateByUrl(this.redirectUrl || this.indexUrl);
+    if (this.loginFlag) {
+      this.router.navigateByUrl(this.redirectUrl || this.indexUrl);
+      this.loginFlag = false;
+    }
   }
 
   gologinPage() {

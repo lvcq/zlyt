@@ -4,7 +4,10 @@ import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatGridListModule } from '@angular/material/grid-list';
-import {MatIconModule} from '@angular/material/icon';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+
+import { ClipboardModule } from '@angular/cdk/clipboard';
 
 import { WebPreviewTabsModule } from '@components/web-preview-tabs/web-preview-tabs.module';
 
@@ -21,7 +24,9 @@ import { InstancesComponent } from './instances.component';
     MatButtonModule,
     MatGridListModule,
     MatIconModule,
-    WebPreviewTabsModule
+    WebPreviewTabsModule,
+    ClipboardModule,
+    MatSnackBarModule
   ]
 })
 export class InstancesModule { }

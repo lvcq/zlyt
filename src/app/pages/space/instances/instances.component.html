@@ -34,7 +34,7 @@
         </mat-card-content>
         <mat-card-actions class="action-bar">
             <button mat-button [routerLink]="'/editor/'+demo.id">编辑</button>
-            <button mat-button>SHARE</button>
+            <button mat-button (click)="copyShareUrl(demo.id)" >分享</button>
         </mat-card-actions>
     </mat-card>
 </ng-template>

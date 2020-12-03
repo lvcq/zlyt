@@ -23,18 +23,6 @@ export class UserService {
     private userApi: UserAPI
   ) { }
 
-  public setLoginedStatus(islogined: boolean) {
-    this.isLogined.next(islogined);
-  }
-
-  public setUserInfo(info: UserInfo) {
-    this.userInfo.next(info);
-  }
-
-  public setLogout() {
-    this.logoutSucess.next(true);
-  }
-
   public login({ username, password }: { username: string; password: string }): Observable<{ status: boolean; msg?: string; }> {
     const { pwd, timestamp } = Login.cryptoPassword(username, password);
     return this.userApi.login({

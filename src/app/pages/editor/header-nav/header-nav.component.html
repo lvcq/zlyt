@@ -1,9 +1,8 @@
 <mat-toolbar [color]="'primary'">
     <div class="logo" [routerLink]="['/space/instances']">ZLYT</div>
     <div class="center-space">
+        <button mat-raised-button class="h-btn" aria-label="back to demonstrate list" color="primary" [routerLink]="['/space/instances']">我的示例</button>
         <button mat-raised-button class="h-btn" aria-label="demonstrate save btn" color="primary" (click)="handleSave()">保存</button>
     </div>
-    <button mat-icon-button class="example-icon" aria-label="login btn">
-        <mat-icon>account_circle</mat-icon>
-    </button>
+    <app-user-status></app-user-status>
 </mat-toolbar>

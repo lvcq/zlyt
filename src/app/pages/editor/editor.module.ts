@@ -12,6 +12,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 
 import { CodePlayboardModule } from '@components/code-playboard/code-playboard.module';
 import { WebPreviewModule } from '@components/web-preview/web-preview.module';
+import { UserStatusModule } from '@components/user-status/user-status.module';
 
 import { EditorRoutingModule } from './editor-routing.module';
 import { EditorComponent } from './editor.component';
@@ -41,7 +42,8 @@ import { EditorService } from './editor.service';
     TextFieldModule,
     MatGridListModule,
     CodePlayboardModule,
-    WebPreviewModule
+    WebPreviewModule,
+    UserStatusModule
   ],
   providers: [
     EditorService

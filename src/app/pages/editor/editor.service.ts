@@ -75,6 +75,20 @@ export class EditorService {
         })
     }
 
+    clear() {
+        this.id = "";
+        this.codeObser.next({
+            html: '',
+            css: '',
+            js: ''
+        })
+        this.demoMeta.next({
+            id: '',
+            name: '',
+            desc: ''
+        });
+    }
+
 }
 
 export interface DemoMeta {
